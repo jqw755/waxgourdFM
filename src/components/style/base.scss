@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 37.5px; /* base iphone6 */
+}
+
+html,body{
+  width: 100%;
+  height: 100%;
+}
+
+.clear_fix {
+  content: '';
+  display: inline-block;
+  clear: both;
+}
+
+.hide {
+  display: none !important;
+}
+
+a {
+  text-decoration: none;
+}
