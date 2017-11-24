@@ -5,7 +5,7 @@ import store from '../store/store'
 import * as types from '../store/type'
 //路由
 import login from '../components/view/login.vue'
-import index from '../components/view/index.vue'
+import index from '../components/view/index/index.vue'
 import search from '../components/view/search.vue'
 
 Vue.use(Router)
