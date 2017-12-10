@@ -1,27 +1,29 @@
 <template>
-    <div class="index_container">
-        <Guide></Guide>
-    </div>
+  <div class="index_container">
+    <Logo></Logo>
+    <Banner></Banner>
+    <Category></Category>
+  </div>
 </template>
 
 <script>
-    import Guide from './guide.vue'
-    export default {
-        data() {
-            return {}
-        },
-        mounted: function () {
-//            this.$api.get('/api', {type: 'album', id: 1}).then((res) => {
-//                console.log(res.data.data)
-//            }).catch(e => alert(e))
-        },
-        methods: {},
-        components:{
-            Guide
-        }
+  import Logo from './logo.vue'
+  import Banner from './banner.vue'
+  import Category from './category.vue'
+  export default {
+    data() {
+      return {}
+    },
+    mounted: function () {
+
+    },
+    methods: {},
+    components: {
+      Logo, Banner,Category
     }
+  }
 </script>
 
 <style lang="scss">
-    @import '../../style/index/index';
+  @import '../../style/index/index';
 </style>
