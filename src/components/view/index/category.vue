@@ -7,6 +7,20 @@
         </li>
       </ul>
     </div>
+    <div class="recommend_list">
+      <ul class="recommend_ul">
+        <li class="recommend_li" v-for="(item,i) in recommends" :key="i">
+          <p class="re_img">
+            <img :src="item.album.cover.urls[0].url" alt="">
+          </p>
+          <p class="re_info">
+            <span>{{item.album.name}}</span>
+            <span>所属专辑：{{item.album.categoryName}}</span>
+            <span>详细：{{item.album.desc}}</span>
+          </p>
+        </li>
+      </ul>
+    </div>
   </section>
 </template>
 
@@ -59,16 +73,23 @@
             title: '广播电台',
             id: 39137
           }
-        ]
+        ],
+        recommends: []
       }
     },
     mounted: function () {
-//      this.getData();
+      this.getData();
     },
     methods: {
       getData(){
-        this.$api.get('/api', {type: 'skip_show'}).then((res) => {
-          console.log(res.data.data)
+        const self = this;
+        let cateLen = self.cateArr.length,
+          random = parseInt(Math.random() * 10 + 0, cateLen),
+          albumId = self.cateArr[random].id;
+        self.$api.get('/api', {type: 'album', id: albumId, page: 1, page_size: 3}).then((res) => {
+          let data = res.data.data;
+          self.recommends = data.albumInfoList;
+//          console.log(self.recommends)
         }).catch(e => alert(e))
       }
     }
@@ -84,7 +105,41 @@
         height: 1.1rem;
         line-height: 1.1rem;
         text-align: center;
-
+        a {
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .recommend_list {
+      margin-bottom:1rem;
+      .recommend_ul {
+        width: 100%;
+        .recommend_li {
+          display: flex;
+          width: 95%;
+          margin: 0.5rem 2.5%;
+          .re_img {
+            width: 18%;
+            max-height: 80px;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .re_info{
+            width: 80%;
+            padding: 1% 1%;
+            span{
+              display: inline-block;
+              width: 100%;
+              overflow: hidden;
+              text-overflow:ellipsis;
+              white-space: nowrap;
+            }
+          }
+        }
       }
     }
   }
