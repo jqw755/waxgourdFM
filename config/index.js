@@ -16,7 +16,14 @@ module.exports = {
               pathRewrite: {
                   '^/api': '/'
               }
-          }
+          },
+          '/kl': {
+              target: 'http://m.kaolafm.com/webapi',
+              changeOrigin: true,
+              pathRewrite: {
+                  '^/kl': ''
+              }
+          },
       },
 
     // Various Dev Server settings

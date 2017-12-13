@@ -1,0 +1,28 @@
+.sprites{
+  &:before{
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 24px;
+    background: url("../../image/chinese.png") no-repeat;
+    background-size: 142px 120px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+    -webkit-transform: translate(-50%,0);
+    top: 0;
+  }
+}
+
+.s0:before{
+  background-position: 0 0;
+}
+.s1:before{
+  background-position: 0 -24px;
+}
+.s2:before{
+  background-position: 0 -48px;
+}
+.s3:before{
+  background-position: 0 -72px;
+}

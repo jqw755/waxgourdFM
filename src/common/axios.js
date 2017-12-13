@@ -8,7 +8,7 @@ axios.interceptors.request.use(config => {
     store.commit('loading');
     return config
 }, error => {
-    return Promise.reject(error)
+    return Promise.reject(error);
 })
 
 //响应拦截
@@ -16,7 +16,8 @@ axios.interceptors.response.use(response => {
     store.commit('hideLoading');
     return response
 }, error => {
-    return Promise.resolve(error.response)
+    console.log('响应出错,测试下面的return promise.resolve');
+    return Promise.resolve(error.response);
 })
 
 //检查响应状态
@@ -38,11 +39,11 @@ function checkStatus(response) {
 function checkCode(res) {
     // 如果code异常(这里已经包括网络错误，服务器错误，后端抛出的错误)，可以弹出一个错误提示，告诉用户
     if (res.status === -404) {
-        alert('是不是网络不好，刷新再试试');
+        console.log('是不是网络不好，刷新再试试吧');
     }
-    // if (res.data && (!res.data.success)) {
-    //     alert(res.data.error_msg)
-    // }
+    if (res && (res.data.code < 0)) {
+        console.log(res.data.msg)
+    }
     return res;
 }
 
@@ -77,12 +78,10 @@ function get(url, params) {
         headers: {
             'X-Requested-With': 'XMLHttpRequest'
         }
-    }).then(
-        (response) => {
+    }).then((response) => {
             return checkStatus(response)
         }
-    ).then(
-        (res) => {
+    ).then((res) => {
             return checkCode(res)
         }
     )

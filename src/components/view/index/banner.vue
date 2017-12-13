@@ -20,7 +20,7 @@
             // 所有的参数同 swiper 官方 api 参数
             autoplay: true,
             direction: 'horizontal',
-            effect: "coverflow",
+            effect: "effect",
             loop: true
           },
           images: [
@@ -50,11 +50,3 @@
     }
   }
 </script>
-
-<style lang="scss">
-  .banner_wrap {
-    .banner_img {
-      width: 100%;
-    }
-  }
-</style>
